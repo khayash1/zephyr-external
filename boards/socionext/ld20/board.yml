@@ -1,0 +1,6 @@
+board:
+  name: akebi96
+  full_name: Socionext Akebi96 board
+  vendor: socionext
+  socs:
+  - name: ld20

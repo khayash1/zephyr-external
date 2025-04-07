@@ -1,0 +1,6 @@
+board:
+  name: nx1_ref
+  full_name: Socionext NX1 reference board
+  vendor: socionext
+  socs:
+  - name: nx1

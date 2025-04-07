@@ -1,0 +1,28 @@
+// SPDX-License-Identifier: Apache-2.0
+/* Copyright (c) 2025 Socionext Inc. */
+
+/dts-v1/;
+
+#include <socionext/uniphier-nx1.dtsi>
+
+/ {
+	model = "Socionext UniPhier NX1 reference board";
+	compatible = "socionext,uniphier-nx1-ref", "socionext,uniphier-nx1";
+
+	chosen {
+		zephyr,sram = &dram0;
+		zephyr,console = &serial0;
+		zephyr,shell-uart = &serial0;
+	};
+
+	dram0: memory@20000000 {
+		compatible = "mmio-sram";
+		device_type = "memory";
+		reg = <0x20000000 DT_SIZE_M(128)>;
+	};
+};
+
+&serial0 {
+	status = "okay";
+	current-speed = <115200>;
+};

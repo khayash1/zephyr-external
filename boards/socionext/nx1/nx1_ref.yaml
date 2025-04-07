@@ -1,0 +1,7 @@
+identifier: nx1_ref
+name: Socionext NX1 reference board
+type: mcu
+arch: arm64
+toolchain:
+  - zephyr
+  - cross-compile
