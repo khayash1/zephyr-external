@@ -1,0 +1,72 @@
+// SPDX-License-Identifier: Apache-2.0
+/* Copyright (c) 2025 Socionext Inc. */
+
+#include <mem.h>
+#include <arm64/armv8-a.dtsi>
+#include <zephyr/dt-bindings/interrupt-controller/arm-gic.h>
+
+/ {
+	cpus {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		cpu@0 {
+			device_type = "cpu";
+			compatible = "arm,cortex-a72";
+			reg = <0x000>;
+		};
+
+		cpu@1 {
+			device_type = "cpu";
+			compatible = "arm,cortex-a72";
+			reg = <0x001>;
+		};
+
+		cpu@100 {
+			device_type = "cpu";
+			compatible = "arm,cortex-a53";
+			reg = <0x100>;
+		};
+
+		cpu@101 {
+			device_type = "cpu";
+			compatible = "arm,cortex-a53";
+			reg = <0x101>;
+		};
+	};
+
+	psci {
+		compatible = "arm,psci-0.2";
+		method = "smc";
+	};
+
+	timer {
+		compatible = "arm,armv8-timer";
+		interrupt-parent = <&gic>;
+		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL IRQ_DEFAULT_PRIORITY>,
+			     <GIC_PPI 14 IRQ_TYPE_LEVEL IRQ_DEFAULT_PRIORITY>,
+			     <GIC_PPI 11 IRQ_TYPE_LEVEL IRQ_DEFAULT_PRIORITY>,
+			     <GIC_PPI 10 IRQ_TYPE_LEVEL IRQ_DEFAULT_PRIORITY>;
+	};
+
+	soc {
+		interrupt-parent = <&gic>;
+
+		gic: interrupt-controller@5fe00000 {
+			compatible = "arm,gic-v3", "arm,gic";
+			reg = <0x5fe00000 0x10000>,     /* GICD */
+			      <0x5fe80000 0x80000>;     /* GICR */
+			interrupt-controller;
+			#interrupt-cells = <4>;
+			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL IRQ_DEFAULT_PRIORITY>;
+		};
+
+		serial0: serial@54006800 {
+			compatible = "socionext,uniphier-uart";
+			reg = <0x54006800 0x40>;
+			interrupts = <GIC_SPI 33 IRQ_TYPE_LEVEL IRQ_DEFAULT_PRIORITY>;
+			clock-frequency = <58823529>;
+			status = "disabled";
+		};
+	};
+};
