@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2025 Socionext Inc.
+
+config SOC_UNIPHIER_LD20
+	bool
+
+config SOC
+	default "ld20" if SOC_UNIPHIER_LD20

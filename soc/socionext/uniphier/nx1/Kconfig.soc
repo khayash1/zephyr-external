@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2025 Socionext Inc.
+
+config SOC_UNIPHIER_NX1
+	bool
+
+config SOC
+	default "nx1"  if SOC_UNIPHIER_NX1

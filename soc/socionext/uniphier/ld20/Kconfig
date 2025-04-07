@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2025 Socionext Inc.
+
+config SOC_UNIPHIER_LD20
+	select ARM64
+	select CPU_CORTEX_A72
+	select ARM_ARCH_TIMER if SYS_CLOCK_EXISTS

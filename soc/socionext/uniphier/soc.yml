@@ -1,0 +1,5 @@
+series:
+  - name: uniphier
+    socs:
+      - name: ld20
+      - name: nx1

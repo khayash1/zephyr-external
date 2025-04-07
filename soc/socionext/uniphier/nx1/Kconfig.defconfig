@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2025 Socionext Inc.
+
+if SOC_UNIPHIER_NX1
+
+config NUM_IRQS
+	default 288
+
+config SYS_CLOCK_HW_CYCLES_PER_SEC
+	default 50000000
+
+endif # SOC_UNIPHIER_NX1
