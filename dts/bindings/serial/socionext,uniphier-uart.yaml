@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (c) 2025 Socionext Inc.
+
+description: Socionet UniPhier UART
+
+compatible: "socionext,uniphier-uart"
+
+include: uart-controller.yaml
+
+properties:
+  reg:
+    required: true
